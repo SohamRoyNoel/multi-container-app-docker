@@ -8,7 +8,7 @@ before_install:
   - docker build -t noelroy/react-test -f ./client/Dockerfile.dev ./client
 
 script: 
-  - docker run noelroy/react-test npm test -- --coverage # --coverage is for terminate the test flow
+  - docker run -e CI=true noelroy/react-test npm test
 
 after_success: 
   - docker build -t noelroy/client ./client
