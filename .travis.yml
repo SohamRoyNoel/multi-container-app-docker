@@ -5,20 +5,20 @@ services:
 
 # Test is needed for Client only, can be added more lines like below
 before_install: 
-  - docker build -t noelroy/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t noelroy720/react-test -f ./client/Dockerfile.dev ./client
 
 script: 
-  - docker run -e CI=true noelroy/react-test npm test
+  - docker run -e CI=true noelroy720/react-test npm test
 
 after_success: 
-  - docker build -t noelroy/client ./client
-  - docker build -t noelroy/server ./server
-  - docker build -t noelroy/worker ./worker
-  - docker build -t noelroy/nginx ./nginx
+  - docker build -t noelroy720/client ./client
+  - docker build -t noelroy720/server ./server
+  - docker build -t noelroy720/worker ./worker
+  - docker build -t noelroy720/nginx ./nginx
   # login to docker cli
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # push images to docker hub
-  - docker push noelroy/client
-  - docker push noelroy/server
-  - docker push noelroy/worker
-  - docker push noelroy/nginx
+  - docker push noelroy720/client
+  - docker push noelroy720/server
+  - docker push noelroy720/worker
+  - docker push noelroy720/nginx
