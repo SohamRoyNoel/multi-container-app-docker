@@ -3,28 +3,28 @@
     "containerDefinitions": [
         {
             "name": "client",
-            "image": "noelroy720/multi-client",
+            "image": "noelroy720/client",
             "hostname": "client",
             "essential": false,
             "memory": 128
         },
         {
             "name": "server",
-            "image": "noelroy720/multi-server",
+            "image": "noelroy720/server",
             "hostname": "api",
             "essential": false,
             "memory": 128
         },
         {
             "name": "worker",
-            "image": "noelroy720/multi-worker",
+            "image": "noelroy720/worker",
             "hostname": "worker",
             "essential": false,
             "memory": 128
         },
         {
             "name": "nginx",
-            "image": "noelroy720/multi-nginx",
+            "image": "noelroy720/nginx",
             "hostname": "nginx",
             "essential": true,
             "portMappings": [
