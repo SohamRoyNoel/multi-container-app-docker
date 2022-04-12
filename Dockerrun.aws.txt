@@ -1,0 +1,42 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client",
+            "image": "noelroy720/multi-client",
+            // this name will be same as the service name on docker-compose
+            "hostname": "client",
+            // if marked as true that means if it crashes, rest of the containers will be closed as well
+            "essential": false
+        },
+        {
+            "name": "server",
+            "image": "noelroy720/multi-server",
+            "hostname": "api",
+            "essential": false
+        },
+        {
+            "name": "worker",
+            "image": "noelroy720/multi-worker",
+            "hostname": "worker",
+            "essential": false
+        },
+        {
+            "name": "nginx",
+            "image": "noelroy720/multi-nginx",
+            "hostname": "nginx" ,
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            // this will be same as the NAME of containerDefinitions
+            "links": [
+                "client",
+                "server"
+            ]
+        }
+    ]
+}
